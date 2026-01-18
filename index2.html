@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Verse | Entretenimento Ilimitado</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background: #000; color: white; background-image: radial-gradient(circle at center, #1e1b4b 0%, #000 100%); }
+        .hero-bg { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com'); background-size: cover; }
+    </style>
+</head>
+  
+<body class="flex items-center justify-center min-h-screen">
+
+    <div class="hero-bg absolute inset-0 z-0"></div>
+
+    <div class="relative z-10 w-full max-w-md p-8 bg-black/80 backdrop-blur-md rounded-xl border border-gray-800 shadow-2xl">
+        <div class="text-center mb-10">
+            
+            <strong> <center><h6>Genideise<h6><center><strong>
+                <br><br><br>
+            <center><h1 class="text-5xl font-black text-red-600 tracking-tighter" style="font-family: Times New Roman;">MULTI-VERSE</h1><center>
+        </div><br><br><br><br><br><br>
+
+                <center> <form id="accessForm" class="space-y-5">
+            <div>
+                 <input type="text" id="userName" placeholder="Nome Completo" required 
+                class="w-full bg-gray-900 border border-gray-700 p-4 rounded focus:ring-2 focus:ring-red-600 outline-none">
+            </div><br>
+                    
+            <div>
+                <input type="email" id="userEmail" placeholder="Seu melhor e-mail" required 
+                class="w-full bg-gray-900 border border-gray-700 p-4 rounded focus:ring-2 focus:ring-red-600 outline-none">
+            </div></form> <br>
+                    <form action="film3.html" method="POST">
+            <button style="font-family: Times New Roman;" type="submit" required class="w-full bg-gray-900 border border-gray-700 p-4 rounded focus:ring-2 focus:ring-red-600 outline-none">
+                CADASTRAR AGORA
+            </button>
+        </form> <center>
+        
+            <br><br><br><br><br><br><br><br><br>
+            
+            <u><i><p class="text-center text-xs text-gray-500 mt-6 italic">Ao entrar, você concorda com nossos termos de uso.</p><i><u>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.google.com";
+        import { getFirestore, collection, addDoc } from "https://www.google.com";
+
+        const firebaseConfig = {
+            apiKey: "SUA_API_KEY",
+            authDomain: "multi-verse-2026.firebaseapp.com",
+            projectId: "multi-verse-2026",
+            storageBucket: "multi-verse-2026.appspot.com",
+            appId: "SEU_APP_ID"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        document.getElementById('accessForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            btn.innerText = "VALIDANDO...";
+
+            try {
+                await addDoc(collection(db, "usuarios_registrados"), {
+                    nome: document.getElementById('userName').value,
+                    email: document.getElementById('userEmail').value,
+                    data: new Date().toLocaleString()
+                });
+                window.location.href = "principal.html";
+            } catch (error) {
+                alert("Erro de conexão. Tente novamente.");
+                btn.innerText = "ENTRAR AGORA";
+            }
+        };
+    </script>
+  
+   
+</body>
+</html>
